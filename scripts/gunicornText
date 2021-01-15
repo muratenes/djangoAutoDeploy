@@ -1,0 +1,19 @@
+python3
+f = open('/etc/systemd/system/gunicorn_site_folder.service','w')
+a = """
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=user_name
+Group=www-data
+WorkingDirectory=parent_foldersite_folder
+ExecStart=parent_foldersite_folder/venv_folder/bin/gunicorn --workers 3 --bind unix:parent_foldersite_folder/site_folder.sock project_name.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+"""
+f.write(str(a))
+f.close()

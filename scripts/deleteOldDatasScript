@@ -1,0 +1,6 @@
+rm -rf parent_foldersite_folder
+rm -rf /etc/nginx/sites-available/site_folder
+rm -rf /etc/systemd/system/gunicorn_site_folder.service
+rm -rf /etc/nginx/sites-enabled/site_folder
+systemctl restart nginx.service
+systemctl daemon-reload

@@ -1,0 +1,22 @@
+python3
+f = open('/etc/nginx/sites-available/site_folder','w')
+a = """
+server {
+
+listen 80;
+server_name domain_name;
+
+location = /favicon.ico { access_log off; log_not_found off; }
+location /static_file_folder/ {
+root parent_foldersite_folder;
+}
+
+location / {
+include proxy_params;
+proxy_pass http://unix:parent_foldersite_folder/site_folder.sock;
+}
+}
+
+"""
+f.write(str(a))
+f.close()
